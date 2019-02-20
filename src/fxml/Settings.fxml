@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="998.0" prefWidth="2000" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Settings">
+   <children>
+      <TitledPane animated="false" prefHeight="998.0" prefWidth="2000" text="                                                                                                                                         settings" textAlignment="CENTER" textFill="#eb3285">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="33.0" layoutY="14.0" text="Genral Settings" textFill="#3509e4">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="email" layoutX="55.0" layoutY="56.0" prefHeight="21.0" prefWidth="0.0" />
+                  <Label fx:id="profile" layoutX="48.0" layoutY="111.0" />
+               </children>
+            </AnchorPane>
+        </content>
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </TitledPane>
+   </children>
+</AnchorPane>

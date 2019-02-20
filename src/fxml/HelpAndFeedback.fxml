@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="998.0" prefWidth="2000" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HelpAndFeedback">
+   <children>
+      <TitledPane animated="false" prefHeight="998.0" prefWidth="2000" text="                                                                                                               Help" textAlignment="CENTER" textFill="#eb3285">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="add" layoutX="442.0" layoutY="272.0" mnemonicParsing="false" style="-fx-background-radius: 13,13;" text="Add a new account" textFill="#3509e4" />
+                  <ImageView fitHeight="41.0" fitWidth="44.0" layoutX="388.0" layoutY="268.0">
+                     <image>
+                        <Image url="@../resources/icon-file-128.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="delete" layoutX="442.0" layoutY="228.0" mnemonicParsing="false" style="-fx-background-radius: 13,13;" text="Delete your Account" textFill="#3509e4" />
+                  <ImageView fitHeight="41.0" fitWidth="44.0" layoutX="388.0" layoutY="224.0">
+                     <image>
+                        <Image url="@../resources/icon-file-128.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="41.0" fitWidth="44.0" layoutX="388.0" layoutY="183.0">
+                     <image>
+                        <Image url="@../resources/icon-file-128.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="change" layoutX="442.0" layoutY="187.0" mnemonicParsing="false" onAction="#changepass_handler" style="-fx-background-radius: 13,13;" text="Change or reset your password" textFill="#3509e4" />
+                  <Label layoutX="397.0" layoutY="141.0" prefHeight="31.0" prefWidth="146.0" text="Popular articles " textFill="#3509e4">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <TextArea layoutX="399.0" layoutY="72.0" prefHeight="41.0" prefWidth="526.0" promptText="Describe your issue" />
+                  <Label layoutX="399.0" layoutY="42.0" text="how can we help you?" textFill="#3509e4">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <!--<Button fx:id="feedback" layoutX="458.0" layoutY="320.0" mnemonicParsing="false" onAction="#seefeedbackHandler" prefHeight="32.0" prefWidth="126.0" style="-fx-background-color: opaque;" text="send feedback" textFill="#3509e4">-->
+                     <!--<font>-->
+                        <!--<Font name="System Bold" size="14.0" />-->
+                     <!--</font>-->
+                  <!--</Button>-->
+               </children></AnchorPane>
+        </content>
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </TitledPane>
+   </children>
+</AnchorPane>

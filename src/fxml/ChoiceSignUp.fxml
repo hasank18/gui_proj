@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="switch_pane" prefHeight="1000.0" prefWidth="1920.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ChoiceSignUp">
+   <children>
+      <ImageView fitHeight="1000" fitWidth="1913.0" opacity="0.34">
+         <image>
+            <Image url="@../resources/istockphoto-924518044-612x612.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="676.0" layoutY="215.0" opacity="0.64" prefHeight="203.0" prefWidth="555.0" style="-fx-background-color: #3898a6; -fx-background-radius: 50,40;" textFill="#3898a6" />
+      <Label layoutX="860.0" layoutY="290.0" prefHeight="52.0" prefWidth="228.0" text="SIGN UP AS ?" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="524.0" layoutY="383.0" opacity="0.71" prefHeight="282.0" prefWidth="372.0" style="-fx-background-color: #FFDAB9; -fx-background-radius: 60,40;" />
+      <Label layoutX="967.0" layoutY="381.0" opacity="0.71" prefHeight="282.0" prefWidth="402.0" style="-fx-background-color: #FFDAB9; -fx-background-radius: 60,40;" />
+      <Button fx:id="provider" layoutX="1101.0" layoutY="539.0" mnemonicParsing="false" onAction="#providerEvnetHandler" prefHeight="44.0" prefWidth="167.0" style="-fx-background-radius: 16.4; -fx-alignment: backward;" text="SignUp Here !" textFill="#3898a6">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Button>
+      <Button fx:id="parent" layoutX="622.0" layoutY="543.0" mnemonicParsing="false" onAction="#parentEventHandler" prefHeight="42.0" prefWidth="167.0" style="-fx-background-radius: 16.4;" text="SignUp Here !" textFill="#3898a6">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Button>
+      <Label layoutX="905.0" layoutY="539.0" prefHeight="35.0" prefWidth="52.0" text="OR" textFill="#3898a6">
+         <font>
+            <Font name="System Bold" size="29.0" />
+         </font>
+      </Label>
+      <Button fx:id="Back_Page" layoutX="24.0" layoutY="16.0" mnemonicParsing="false" onAction="#BackPageHandler" prefHeight="42.0" prefWidth="131.0" style="-fx-background-radius: 16.4, 15; -fx-background-color: opaque;" text="Page" textFill="#3898a6">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Button>
+      <Label layoutX="655.0" layoutY="448.0" prefHeight="52.0" prefWidth="124.0" text="Parents" textFill="#3898a6">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="1077.0" layoutY="439.0" prefHeight="59.0" prefWidth="215.0" text="Sitters/Tutors" textFill="#3898a6">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font></Label>
+      <Label layoutX="549.0" layoutY="500.0" prefHeight="35.0" prefWidth="335.0" text="click below to begin sign up" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
+      <Label layoutX="1023.0" layoutY="500.0" prefHeight="35.0" prefWidth="323.0" text="click below to begin sign up" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
+      <Label layoutX="209.0" layoutY="782.0" prefHeight="55.0" prefWidth="372.0" text="Trusted by families " textFill="#3898a6">
+         <font>
+            <Font name="System Bold" size="38.0" />
+         </font>
+      </Label>
+      <Label layoutX="49.0" layoutY="837.0" prefHeight="59.0" prefWidth="488.0" text="Loved by service providers" textFill="#3898a6">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="1608.0" layoutY="595.0" opacity="0.6" prefHeight="31.0" prefWidth="131.0" text="Provider " textFill="#3898a6">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="1475.0" layoutY="712.0" opacity="0.67" text="System" textFill="#3898a6">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="1767.0" layoutY="507.0" opacity="0.29" text="Service " textFill="#3898a6">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

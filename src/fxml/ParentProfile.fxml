@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="container" prefHeight="783.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Client_info_Controller">
+   <children>
+      <TableView fx:id="table" layoutY="160.0" prefHeight="799.0" prefWidth="1100.0" style="-fx-background-color: IMG_20190112_021820_107.jpg;">
+        <columns>
+            <TableColumn fx:id="client_image" prefWidth="79.0" text="Image" />
+          <TableColumn fx:id="client_id" prefWidth="73.00001525878906" text="Client_id" />
+          <TableColumn fx:id="client_fname" onEditCommit="#updatefNameHandler" prefWidth="127.0" text="Client UserName" />
+            <TableColumn fx:id="client_lname" onEditCommit="#updatelNameHandler" prefWidth="137.0" text="ClientEmail" />
+            <TableColumn fx:id="client_email" minWidth="0.0" onEditCommit="#updateemailHandler" prefWidth="137.0" text="ClientPass" />
+            <TableColumn prefWidth="114.0" text="ClientName" />
+            <TableColumn fx:id="client_phonenum" onEditCommit="#updatephonenumHandler" prefWidth="108.0" text="phoneNum" />
+            <TableColumn prefWidth="75.0" text="Birthdate" />
+            <TableColumn fx:id="client_gender" minWidth="0.0" onEditCommit="#updategenderHandler" prefWidth="93.0" text="Gender" />
+            <TableColumn fx:id="client_location" onEditCommit="#updatelocationHandler" prefWidth="122.0" text="address" />
+        </columns>
+      </TableView>
+      <Button fx:id="search" layoutX="730.0" layoutY="122.0" mnemonicParsing="false" onKeyReleased="#searchclient" prefHeight="33.0" prefWidth="37.0" style="-fx-background-radius: 30,30;" text="s" textFill="#20b2aa">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <TextField layoutX="767.0" layoutY="123.0" onKeyReleased="#searchclient" prefHeight="31.0" prefWidth="268.0" />
+      <HBox layoutX="232.0" layoutY="66.0" prefHeight="93.0" prefWidth="456.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#deleteClient" prefHeight="31.0" prefWidth="148.0" style="-fx-background-radius: 14,15;" text="Remove_Client" textFill="LIGHTSEAGREEN">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+         </children>
+      </HBox>
+      <Button fx:id="show_image" layoutX="659.0" layoutY="35.0" mnemonicParsing="false" onAction="#show_image" text="show image" />
+      <Button fx:id="edit" layoutX="145.0" layoutY="111.0" mnemonicParsing="false" onAction="#editClientInfo" prefHeight="31.0" prefWidth="96.0" style="-fx-background-radius: 14,15;" text="EditClient" textFill="LIGHTSEAGREEN">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+
+   </children>
+</AnchorPane>
