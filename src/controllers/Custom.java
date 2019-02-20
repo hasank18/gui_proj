@@ -52,7 +52,7 @@ public class Custom extends AnchorPane {
         age.setText(age.getText()+customData.getAge1());
         price_hour.setText(price_hour.getText()+customData.getPrice_hour1());
         rating.setRating(customData.getRating1());
-        circle.setFill(new ImagePattern(customData.getImage()));
+        circle.setFill(new ImagePattern(customData.getImage().getImage()));
     }
 
 

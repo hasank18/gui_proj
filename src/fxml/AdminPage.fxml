@@ -1,80 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Point3D?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="container" maxHeight="600.0" maxWidth="600.0" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminPage">
-   <children>
-      <ImageView fitHeight="600.0" fitWidth="600.0" opacity="0.6">
-         <image>
-            <Image url="@../resources/standard_1500x1125_ParentTeacherConference.jpg" />
-         </image>
-      </ImageView>
-      <SplitPane fx:id="splitpane" cacheShape="false" centerShape="false" dividerPositions="0.6967871485943775, 0.7128514056224899" layoutX="50.0" layoutY="50.0" maxHeight="500.0" maxWidth="500.0" minHeight="500.0" minWidth="500.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="500.0" prefWidth="500.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="806.0" prefWidth="310.0" style="-fx-background-color: opaque; -fx-background-insets: opaque;">
-               <children>
-                  <Label fx:id="babysitter" layoutX="14.0" layoutY="253.0" onMouseClicked="#handleemployee_infoAction" prefHeight="51.0" prefWidth="112.0" text="BabySitter_info" textFill="#861111">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="137.0" fitWidth="252.0" layoutX="-3.0" layoutY="861.0" pickOnBounds="true">
-                     <image>
-                        <Image url="@../resources/color_savetime.png" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="admin" layoutX="147.0" layoutY="70.0" onMouseClicked="#handleadmin_infoAction" prefHeight="51.0" prefWidth="289.0" text="Admin_Page_Info" textFill="#861111">
-                     <font>
-                        <Font name="System Bold" size="23.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="130.0" fitWidth="129.0" layoutX="3.0" layoutY="31.0">
-                     <image>
-                        <Image url="@../resources/iconfinder_admin_87402.png" />
-                     </image>
-                     <rotationAxis>
-                        <Point3D x="90.0" y="90.0" z="90.0" />
-                     </rotationAxis>
-                  </ImageView>
-                  <Label fx:id="client" layoutX="80.0" layoutY="413.0" onMouseClicked="#handleclient_infoAction" prefHeight="37.0" prefWidth="75.0" text="Client_info" textFill="#861111">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="137.0" fitWidth="129.0" layoutX="213.0" layoutY="199.0">
-                     <image>
-                        <Image url="@../resources/iconfinder_conversation_job_seeker_employee_unemployee_work_2620525.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="81.0" fitWidth="68.0" layoutX="14.0" layoutY="391.0">
-                     <image>
-                        <Image url="@../resources/iconfinder_Teacher_131497.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-
-          <AnchorPane fx:id="switch_pane" minHeight="0.0" minWidth="0.0" onMouseEntered="#onMouseEnter" onMouseExited="#onMouseExit" prefHeight="998.0" prefWidth="679.0" />
-
-          <AnchorPane fx:id="switch_pane" minHeight="0.0" minWidth="0.0" prefHeight="799.0" prefWidth="1002.0" />
-<!--&gt;>>>>>> design updated check it-->
-        </items>
-      </SplitPane>
-      <Label layoutX="872.0" layoutY="35.0" prefHeight="61.0" prefWidth="289.0" text="Admin Page" textFill="#861111">
-         <font>
-            <Font name="System Bold" size="28.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="back" fitHeight="75.0" fitWidth="55.0" layoutX="14.0" layoutY="525.0" onMouseClicked="#backHandler" opacity="0.4">
-         <image>
-            <Image url="@../resources/iconfinder_back_126585.png" />
-         </image>
-      </ImageView>
-   </children>
-</AnchorPane>
+<SplitPane dividerPositions="0.29797979797979796" maxHeight="600.0" maxWidth="600.0" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminPage">
+  <items>
+      <VBox fx:id="vBox" />
+    <AnchorPane minHeight="-Infinity" minWidth="-Infinity" />
+  </items>
+</SplitPane>

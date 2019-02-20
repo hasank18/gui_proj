@@ -9,7 +9,6 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.ImagePattern;
 
 import java.io.FileInputStream;
 import java.net.URL;
@@ -50,7 +49,7 @@ public class ClientPage implements Initializable {
     public void setData() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "admin", "admin" + "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "root", "" + "");
             Statement stmt = con.createStatement();
             String test = "select * from Client where idclient=" + ID;
             ResultSet rs = stmt.executeQuery(test);
@@ -87,10 +86,9 @@ public class ClientPage implements Initializable {
                 Date birthdate = rs.getDate("birthdate");
                 String email = rs.getString("email");
                 String price_hour = rs.getString("price_hour");
-                Image image = new Image(new FileInputStream("default_profile_picture.png"));
-                ImageView imageView = new ImageView(image);
                 int rating = 2;
                 Custom custom = new Custom();
+                ImageView image = new ImageView("@../resources/default_profile_picture.png");
                 custom.updateItem(new CustomData(name,phone,address,birthdate.toString(),email,price_hour,rating,image));
                 listView.getItems().add(custom);
             }

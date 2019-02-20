@@ -1,15 +1,14 @@
 package gui_classes;
 
 import javafx.scene.image.Image;
-
-import javax.swing.text.html.ImageView;
+import javafx.scene.image.ImageView;
 
 public class CustomData {
     String name1,phone1,address1,age1,email1,price_hour1;
     int rating1;
-    Image image;
+    ImageView image;
 
-    public CustomData(String name1, String phone1, String address1, String age1, String email1, String price_hour1, int rating1, Image image) {
+    public CustomData(String name1, String phone1, String address1, String age1, String email1, String price_hour1, int rating1, ImageView image) {
         this.name1 = name1;
         this.phone1 = phone1;
         this.address1 = address1;
@@ -81,11 +80,7 @@ public class CustomData {
         return getName1() + " " + getPhone1() + " " + getAddress1() + " " + getAge1() + " " + getEmail1();
     }
 
-    public Image getImage() {
+    public ImageView getImage() {
         return image;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
     }
 }
