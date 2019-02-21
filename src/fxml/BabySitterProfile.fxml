@@ -8,7 +8,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" prefHeight="783.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ParentProfile">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.BabySitterProfile">
+
     <TableView fx:id="table" layoutY="160.0" prefHeight="799.0" prefWidth="1100.0" style="-fx-background-color: IMG_20190112_021820_107.jpg;">
         <columns>
             <TableColumn fx:id="id" prefWidth="33.99998474121094" text="Id" />
@@ -20,7 +21,7 @@
             <TableColumn fx:id="gender" onEditCommit="#updategender" prefWidth="96.0" text="gender" />
             <TableColumn fx:id="password" onEditCommit="#updatepass" prefWidth="146.0" text="password" />
             <TableColumn fx:id="date" minWidth="0.0" onEditCommit="#updateBirthdate" prefWidth="94.0" text="date" />
-            <!--<TableColumn fx:id="image" onEditCommit="#updateimage" prefWidth="67.0" text="image" />-->
+            <TableColumn fx:id="image" onEditCommit="#updateimage" prefWidth="67.0" text="image" />
             <!--<TableColumn fx:id="priceHour" onEditCommit="#updatepricehour" prefWidth="173.0" text="PriceHour" />-->
         </columns>
     </TableView>
@@ -29,20 +30,20 @@
             <Font name="System Bold" size="17.0" />
         </font>
     </Button>
-    <Button fx:id="delete" layoutX="183.0" layoutY="106.0" mnemonicParsing="false" onAction="#deleteHandler" text="delete_Parent" textFill="#e405ac">
+    <Label layoutX="385.0" layoutY="14.0" text="Babysitters List " textFill="#e405ac">
+        <font>
+            <Font name="System Bold" size="30.0" />
+        </font>
+    </Label>
+    <Button fx:id="delete" layoutX="190.0" layoutY="105.0" mnemonicParsing="false" onAction="#deleteHandler" text="delete_babysitter" textFill="#e405ac">
         <font>
             <Font name="System Bold" size="17.0" />
         </font>
     </Button>
-    <TextField fx:id="search" layoutX="640.0" layoutY="109.0" onAction="#searchbabysitter" prefHeight="31.0" prefWidth="430.0" />
-    <Label layoutX="372.0" layoutY="14.0" text="Parent List" textFill="#e405ac">
+    <TextField fx:id="search" layoutX="640.0" layoutY="109.0" onAction="#searchbabysitter" prefHeight="31.0" prefWidth="324.0" />
+    <Label layoutX="579.0" layoutY="114.0" text="search" textFill="#e405ac">
         <font>
-            <Font name="System Bold" size="26.0" />
-        </font>
-    </Label>
-    <Label layoutX="583.0" layoutY="115.0" text="search" textFill="#e405ac">
-        <font>
-            <Font name="System Bold" size="17.0" />
+            <Font name="System Bold" size="18.0" />
         </font>
     </Label>
 </AnchorPane>

@@ -27,11 +27,6 @@
             <Image url="@../resources/login.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="visible" fitHeight="35.0" fitWidth="41.0" layoutX="183.0" layoutY="450.0" onMouseClicked="#visibleHandler">
-         <image>
-            <Image url="@../resources/_1ui-128.png" />
-         </image>
-      </ImageView>
       <VBox layoutX="1638.0" layoutY="663.0" prefHeight="87.0" prefWidth="287.0">
          <children>
             <Label fx:id="no_email" prefHeight="31.0" prefWidth="236.0">
@@ -50,7 +45,7 @@
          </font>
       </Label>
       <TextField fx:id="username" layoutX="224.0" layoutY="372.0" prefHeight="51.0" prefWidth="296.0" promptText="Enter Your User Name" style="-fx-background-radius: 14;" />
-      <PasswordField fx:id="password" layoutX="224.0" layoutY="442.0" prefHeight="50.0" prefWidth="296.0" promptText="Enter Your Passsword" style="-fx-background-radius: 14;" />
+      <PasswordField fx:id="password" layoutX="224.0" layoutY="442.0" onKeyPressed="#EnterEvent" prefHeight="50.0" prefWidth="296.0" promptText="Enter Your Passsword" style="-fx-background-radius: 14;" />
       <Label layoutX="53.0" layoutY="55.0" prefHeight="50.0" prefWidth="500.0" text="Welcome To Our Service Provider System" textFill="WHITE">
          <font>
             <Font size="23.0" />

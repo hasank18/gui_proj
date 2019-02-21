@@ -15,6 +15,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -174,7 +176,7 @@ public class LoginPage implements Initializable {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "root", "" + "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "admin", "admin" + "");
             Statement stmt = con.createStatement(),stmt2 = con.createStatement();
             String data = "select username,password  from Person where username='" + UserName + "'and password='" + Password + "'";
             System.out.println(data);
@@ -207,7 +209,7 @@ public class LoginPage implements Initializable {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "root", "" + "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "admin", "admin" + "");
             Statement stmt = con.createStatement(),stmt2 = con.createStatement();
             String data = "select * from Person where username='"+UserName+"'and password='"+Password+"'";
             ResultSet rs2 = stmt.executeQuery(data),rs3;
@@ -240,7 +242,7 @@ public class LoginPage implements Initializable {
 
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "root", "" + "");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "admin", "admin" + "");
                 Statement stmt = con.createStatement(),stmt2 = con.createStatement();
                 String data = "select username,password  from Person where username='" + UserName + "'and password='" + Password + "'";
                 System.out.println(UserName+" "+Password);
@@ -269,6 +271,45 @@ public class LoginPage implements Initializable {
         }
 
 
+    public void EnterEvent(KeyEvent keyEvent)throws  IOException{
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            PauseTransition pauseTransition = new PauseTransition(Duration.millis(100));
+            login_button.setTextFill(Color.web("#2560c6"));
+
+            pauseTransition.setOnFinished(e -> {
+                login_button.setTextFill(Color.web("#00CED1"));
+
+
+            });
+            pauseTransition.play();
+
+            if (checkInfo() && loginAsClient()) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/BookingSitter.fxml"));
+                Parent parent = (Parent) loader.load();
+                BookingSitter booking_sitter = loader.getController();
+                booking_sitter.setID(ID);
+                booking_sitter.setData();
+                Scene scene = new Scene(parent);
+                Stage stage = (Stage) ((Node) keyEvent.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } else if (checkInfo() && loginAsBabysitter()) {
+                Parent parent = FXMLLoader.load(getClass().getResource("../fxml/Babysitter.fxml"));
+                Scene scene = new Scene(parent);
+                Stage stage = (Stage) ((Node) keyEvent.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            }
+            if (checkInfo() && loginAsAdmin()) {
+                Parent parent = FXMLLoader.load(getClass().getResource("../fxml/AdminPage.fxml"));
+                Scene scene = new Scene(parent);
+                Stage stage = (Stage) ((Node) keyEvent.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            }
+
+        }
     }
+}
 
 
