@@ -1,14 +1,13 @@
 package gui_classes;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 public class CustomData {
     String name1,phone1,address1,age1,email1,price_hour1;
     int rating1;
-    ImageView image;
+    Image image;
 
-    public CustomData(String name1, String phone1, String address1, String age1, String email1, String price_hour1, int rating1, ImageView image) {
+    public CustomData(String name1, String phone1, String address1, String age1, String email1, String price_hour1, int rating1, Image image) {
         this.name1 = name1;
         this.phone1 = phone1;
         this.address1 = address1;
@@ -75,12 +74,7 @@ public class CustomData {
         this.rating1 = rating1;
     }
 
-    @Override
-    public String toString() {
-        return getName1() + " " + getPhone1() + " " + getAddress1() + " " + getAge1() + " " + getEmail1();
-    }
-
-    public ImageView getImage() {
+    public Image getImage() {
         return image;
     }
 }

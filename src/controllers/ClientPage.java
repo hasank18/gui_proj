@@ -1,40 +1,55 @@
 package controllers;
 
+import com.jfoenix.controls.JFXDrawer;
+import com.jfoenix.controls.JFXHamburger;
+import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import gui_classes.Client;
 import gui_classes.CustomData;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SplitPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
 public class ClientPage implements Initializable {
+    public JFXHamburger hamburger;
+    public JFXDrawer drawer;
     public ListView<Custom> listView;
     Connection con;
     Client client;
     private int ID;
-    @FXML
-    SplitPane splitPane;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        listView.getItems().addAll(custom,custom1,custom2,custom3);
-    }
+        try {
+            AnchorPane SidePane = FXMLLoader.load(getClass().getResource("../fxml/SidePane.fxml"));
+            drawer.setSidePane(SidePane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        HamburgerBackArrowBasicTransition burgertask2 = new HamburgerBackArrowBasicTransition(hamburger);
+        burgertask2.setRate(-1);
+        hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED , (e) ->{
+            burgertask2.setRate(burgertask2.getRate()*-1);
+            burgertask2.play();
+            if(drawer.isOpened()){
+                drawer.close();
+            }
+            else
+                drawer.open();
+        });
 
-    @FXML
-    public void onMouseEnter(MouseEvent mouseEvent) {
-        splitPane.setDividerPosition(0, 0.3);
-    }
-
-    public void onMouseEnter2(MouseEvent mouseEvent) {
-        splitPane.setDividerPosition(0, 0.01);
     }
 
     void setID(int ID) {
@@ -87,8 +102,9 @@ public class ClientPage implements Initializable {
                 String email = rs.getString("email");
                 String price_hour = rs.getString("price_hour");
                 int rating = 2;
+                Image image = new Image(rs.getString("image"));
+                System.out.println(rs.getString("image"));
                 Custom custom = new Custom();
-                ImageView image = new ImageView("../resources/default_profile_picture.png");
                 custom.updateItem(new CustomData(name,phone,address,birthdate.toString(),email,price_hour,rating,image));
                 listView.getItems().add(custom);
             }

@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.ImagePattern;
@@ -28,7 +29,7 @@ public class Custom extends AnchorPane {
     @FXML
     Rating rating;
     @FXML
-    Circle circle;
+    ImageView circle;
 
     public Custom() {
         loadFXML();
@@ -45,24 +46,14 @@ public class Custom extends AnchorPane {
         }
     }
 
-    protected void updateItem(CustomData customData) throws SQLException {
+    protected void updateItem(CustomData customData) {
+        circle.setImage(customData.getImage());
         name.setText(name.getText()+customData.getName1());
         phone.setText(phone.getText()+customData.getPhone1());
         address.setText(address.getText()+customData.getAddress1());
         age.setText(age.getText()+customData.getAge1());
         price_hour.setText(price_hour.getText()+customData.getPrice_hour1());
         rating.setRating(customData.getRating1());
-        circle.setFill(new ImagePattern(customData.getImage().getImage()));
-    }
-
-
-
-    public Circle getCircle() {
-        return circle;
-    }
-
-    public void setCircle(Circle circle) {
-        this.circle = circle;
     }
 
 }

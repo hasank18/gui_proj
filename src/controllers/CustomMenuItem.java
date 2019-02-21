@@ -1,6 +1,7 @@
 package controllers;
 
 import gui_classes.MenuItemData;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -48,4 +49,22 @@ public class CustomMenuItem extends HBox {
         label.setText(customData.getLabel());
     }
 
+    public ImageView getImageView() {
+        return imageView;
+    }
+
+    public void setImageView(ImageView imageView) {
+        this.imageView = imageView;
+    }
+
+    public Label getLabel() {
+        return label;
+    }
+
+    public void setText(String label) {
+        textProperty().setValue(label);
+    }
+    public StringProperty textProperty(){
+        return label.textProperty();
+    }
 }
