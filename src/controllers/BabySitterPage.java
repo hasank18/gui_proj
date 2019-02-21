@@ -42,7 +42,7 @@ public class BabySitterPage implements Initializable {
         double hour_price=10;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "root", "" + "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "admin", "admin" + "");
             Statement stmt = con.createStatement(), stmt2 = con.createStatement();
             String test = "select * from BabySitter where idBabySitter=" + ID;
             ResultSet rs = stmt.executeQuery(test), rs2;
@@ -79,7 +79,7 @@ public class BabySitterPage implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Notifications.create().title("Welcome").text("You have "+babySitter.getBookings().size()+" Bookings requests").show();
+//        Notifications.create().title("Welcome").text("You have "+babySitter.getBookings().size()+" Bookings requests").show();
     }
 
     public int getID() {

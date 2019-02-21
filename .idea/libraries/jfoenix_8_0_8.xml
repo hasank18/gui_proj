@@ -2,8 +2,13 @@
   <library name="jfoenix-8.0.8">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/src/jfoenix-8.0.8.jar!/" />
+      <root url="file://$PROJECT_DIR$/src/controlsfx-8.40.14" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/src/controlsfx-8.40.14" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/src/controlsfx-8.40.14" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/src/controlsfx-8.40.14" recursive="false" type="SOURCES" />
   </library>
 </component>

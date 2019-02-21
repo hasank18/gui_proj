@@ -284,7 +284,7 @@ public class LoginPage implements Initializable {
             pauseTransition.play();
 
             if (checkInfo() && loginAsClient()) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/BookingSitter.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/BookingSitter.fxml"));
                 Parent parent = (Parent) loader.load();
                 BookingSitter booking_sitter = loader.getController();
                 booking_sitter.setID(ID);
