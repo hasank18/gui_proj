@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -25,13 +26,13 @@ public class AdminPage implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        menuItemData = new MenuItemData("@../resources/default_profile_picture.png","hasan");
+        menuItemData = new MenuItemData("file:/resources/my_settings.png","hasan");
         customMenuItem = new CustomMenuItem();
         try {
             customMenuItem.updateItem(menuItemData);
-            vBox.getChildren().add(customMenuItem);
-        } catch (FileNotFoundException e) {
+        } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+        vBox.getChildren().add(customMenuItem);
     }
 }

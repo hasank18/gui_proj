@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginPage">
+<AnchorPane maxHeight="700.0" maxWidth="700.0" minHeight="700.0" minWidth="700.0" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginPage">
    <children>
-      <ImageView fitHeight="997.0" fitWidth="1974.0" layoutX="-122.0" layoutY="-14.0" opacity="0.74">
+      <ImageView fitHeight="700.0" fitWidth="700.0" opacity="0.74" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../resources/474908666_wide%20(1).jpg" />
          </image>
@@ -22,12 +22,12 @@
             <Font name="System Bold" size="28.0" />
          </font>
       </Button>
-      <ImageView fx:id="imageView" fitHeight="202.0" fitWidth="236.0" layoutX="274.0" layoutY="294.0" opacity="0.72" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.9;">
+      <ImageView fx:id="imageView" fitHeight="161.0" fitWidth="144.0" layoutX="300.0" layoutY="228.0" opacity="0.72" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.9;">
          <image>
             <Image url="@../resources/login.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="visible" fitHeight="35.0" fitWidth="41.0" layoutX="186.0" layoutY="567.0" onMouseClicked="#visibleHandler">
+      <ImageView fx:id="visible" fitHeight="35.0" fitWidth="41.0" layoutX="183.0" layoutY="450.0" onMouseClicked="#visibleHandler">
          <image>
             <Image url="@../resources/_1ui-128.png" />
          </image>
@@ -49,23 +49,19 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="username" layoutX="227.0" layoutY="496.0" prefHeight="51.0" prefWidth="296.0" promptText="Enter Your User Name" style="-fx-background-radius: 14;" />
-      <PasswordField fx:id="password" layoutX="227.0" layoutY="559.0" prefHeight="50.0" prefWidth="296.0" promptText="Enter Your Passsword" style="-fx-background-radius: 14;" />
-      <Label layoutX="558.0" layoutY="48.0" prefHeight="50.0" prefWidth="809.0" text="Welcome To Our Service Provider System" textFill="WHITE">
+      <TextField fx:id="username" layoutX="224.0" layoutY="372.0" prefHeight="51.0" prefWidth="296.0" promptText="Enter Your User Name" style="-fx-background-radius: 14;" />
+      <PasswordField fx:id="password" layoutX="224.0" layoutY="442.0" prefHeight="50.0" prefWidth="296.0" promptText="Enter Your Passsword" style="-fx-background-radius: 14;" />
+      <Label layoutX="53.0" layoutY="55.0" prefHeight="50.0" prefWidth="500.0" text="Welcome To Our Service Provider System" textFill="WHITE">
          <font>
-            <Font name="Arial Black" size="34.0" />
+            <Font size="23.0" />
          </font>
       </Label>
-      <Label layoutX="722.0" layoutY="99.0" prefHeight="51.0" prefWidth="399.0" text="we do all the work for you ! " textFill="WHITE">
+      <Label layoutX="151.0" layoutY="105.0" prefHeight="51.0" prefWidth="399.0" text="we do all the work for you ! " textFill="WHITE">
          <font>
-            <Font name="AR CENA" size="37.0" />
+            <Font size="23.0" />
          </font></Label>
-      <Label layoutX="397.0" layoutY="150.0" prefHeight="50.0" prefWidth="1254.0" text="sign up today for exceptional sitting and tutoring service at the highest level of secutity and reliability" textFill="WHITE">
-         <font>
-            <Font name="Arial Black" size="22.0" />
-         </font>
-      </Label>
-      <Button fx:id="login_button" layoutX="303.0" layoutY="619.0" mnemonicParsing="false" onAction="#loginHandler" prefHeight="63.0" prefWidth="144.0" style="-fx-background-color: obaque; -fx-background-radius: 14;" text="Login" textAlignment="CENTER" textFill="#46bdcd">
+      <Label layoutX="2.0" layoutY="150.0" prefHeight="50.0" prefWidth="700.0" style="-fx-alignment: Center;" text="sign up today for exceptional sitting and tutoring service at the highest level of secutity and reliability" textAlignment="CENTER" textFill="WHITE" />
+      <Button fx:id="login_button" layoutX="300.0" layoutY="500.0" mnemonicParsing="false" onAction="#loginHandler" prefHeight="63.0" prefWidth="144.0" style="-fx-background-color: obaque; -fx-background-radius: 14;" text="Login" textAlignment="CENTER" textFill="#46bdcd">
          <font>
             <Font name="System Bold" size="34.0" />
          </font>

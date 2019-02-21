@@ -7,9 +7,12 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import java.io.FileInputStream;
+
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
 
 
 public class CustomMenuItem extends HBox {
@@ -32,8 +35,16 @@ public class CustomMenuItem extends HBox {
             throw new RuntimeException(exception);
         }
     }
-    protected void updateItem(MenuItemData customData) throws FileNotFoundException {
-        imageView.setImage(new Image(new FileInputStream(customData.getImageUrl())));
+    protected void updateItem(MenuItemData customData) throws  MalformedURLException {
+        try {
+            Image image = new Image(customData.getImageUrl());
+            imageView.setImage(image);
+            imageView.setCache(true);
+            imageView.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         label.setText(customData.getLabel());
     }
 

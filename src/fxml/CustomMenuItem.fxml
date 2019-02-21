@@ -1,31 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.text.Font?>
-<fx:root  type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
-    <VBox.margin>
-        <Insets bottom="2.0" top="2.0" />
-    </VBox.margin>
-    <children>
-        <ImageView fitHeight="32.0" fitWidth="32.0" preserveRatio="true">
-            <image>
-            </image>
-            <HBox.margin>
-                <Insets right="5.0" />
-            </HBox.margin></ImageView>
-        <Label maxWidth="1.976931348623157E308" text="Library" textAlignment="CENTER" textFill="WHITE">
-            <font>
-                <Font name="Abyssinica SIL" size="24.0" />
-            </font>
-        </Label>
-    </children>
-    <padding>
-        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-    </padding>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" type="HBox" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="imageView" cache="true" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+         <HBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </HBox.margin>
+         <image>
+            <Image url="@../resources/setting-128.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="label" prefHeight="32.0" text="Label">
+         <HBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </HBox.margin>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
 </fx:root>

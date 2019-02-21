@@ -88,7 +88,7 @@ public class ClientPage implements Initializable {
                 String price_hour = rs.getString("price_hour");
                 int rating = 2;
                 Custom custom = new Custom();
-                ImageView image = new ImageView("@../resources/default_profile_picture.png");
+                ImageView image = new ImageView("../resources/default_profile_picture.png");
                 custom.updateItem(new CustomData(name,phone,address,birthdate.toString(),email,price_hour,rating,image));
                 listView.getItems().add(custom);
             }
