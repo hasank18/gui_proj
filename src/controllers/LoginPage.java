@@ -20,6 +20,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import sample.Main;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,13 +29,6 @@ import java.util.ResourceBundle;
 
 public class LoginPage implements Initializable {
     private static int ID;
-
-    String server = "localhost";
-    int port = 3306;
-    String user = "admin";
-    String Password = "admin";
-    String database = "project_gui";
-    String jdbcurl;
     Connection con = null;
 
     @FXML
@@ -98,6 +92,7 @@ public class LoginPage implements Initializable {
 
     @FXML
     private void loginHandler(ActionEvent event) throws IOException {
+        Main.setUserName(username.getText());
         PauseTransition pauseTransition = new PauseTransition(Duration.millis(100));
         login_button.setTextFill(Color.web("#2560c6"));
 
@@ -176,7 +171,7 @@ public class LoginPage implements Initializable {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "admin", "admin" + "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "root", "" + "");
             Statement stmt = con.createStatement(),stmt2 = con.createStatement();
             String data = "select username,password  from Person where username='" + UserName + "'and password='" + Password + "'";
             System.out.println(data);
@@ -209,7 +204,7 @@ public class LoginPage implements Initializable {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "admin", "admin" + "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "root", "" + "");
             Statement stmt = con.createStatement(),stmt2 = con.createStatement();
             String data = "select * from Person where username='"+UserName+"'and password='"+Password+"'";
             ResultSet rs2 = stmt.executeQuery(data),rs3;
@@ -242,7 +237,7 @@ public class LoginPage implements Initializable {
 
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "admin", "admin" + "");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "root", "" + "");
                 Statement stmt = con.createStatement(),stmt2 = con.createStatement();
                 String data = "select username,password  from Person where username='" + UserName + "'and password='" + Password + "'";
                 System.out.println(UserName+" "+Password);
