@@ -1,4 +1,5 @@
 package controllers;
+import gui_classes.Person;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,15 +15,17 @@ import java.net.URL;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SignUpParent implements Initializable {
-        String server = "localhost";
-        int port = 3306;
-        String user = "admin";
-        String password = "admin";
-        String database = "project_gui";
-        String jdbcurl;
-        Connection con = null;
+    String server = "localhost";
+    int port = 3306;
+    String user = "admin";
+    String password = "admin";
+    String database = "project_gui";
+    String jdbcurl;
+    Connection con = null;
 //         private FileChooser fileChooser;
 //
 //        fileChooser = new FileChooser();
@@ -32,36 +35,35 @@ public class SignUpParent implements Initializable {
 //                new ExtensionFilter("Audio Files", "*wav", "*.mp3", "*.aac"),
 //                new ExtensionFilter("All Files", "*.*")
 //        );
-    private Image image;
+
     @FXML
     Button Back_Page,Continue;
     @FXML
     AnchorPane switch_pane;
     @FXML
-    Label no_fname,no_username,no_email,no_pass,no_pass2,no_gender,no_num,no_location;
+    Label no_name,no_username,no_email,no_pass,no_gender,no_num,no_address,no_date;
     @FXML
-    TextField fname,Email,location,num,username;
+    TextField fname,Email,address,num,username;
     @FXML
-    PasswordField pass,confirm_pass;
+    PasswordField pass;
     @FXML
     DatePicker date;
     @FXML
     ComboBox<String> gender;
-//    @FXML
-//    ImageView image;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         gender.getItems().addAll("Male", "Female");
 
-}
+    }
     @FXML
     private void Back_Page(ActionEvent event)  throws Exception {
 
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("fxml/ChoiceSignUp.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("../fxml/ChoiceSignUp.fxml"));
         switch_pane.getChildren().setAll(pane);
     }
 
-//    BrowseAction.setOnAction(e ->
+    //    BrowseAction.setOnAction(e ->
 //
 //    {
 //        //Single File Selection
@@ -79,9 +81,13 @@ public class SignUpParent implements Initializable {
 //        }
 //    }
     @FXML
-    private void continueHandleEvent(ActionEvent event) {
+    private void continueHandleEvent(ActionEvent event) throws Exception{
         if (checkInfo())
             sign_up_parent();
+
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("../fxml/Login.fxml"));
+        switch_pane.getChildren().setAll(pane);
+
 
     }
 
@@ -90,39 +96,44 @@ public class SignUpParent implements Initializable {
         String Name = fname.getText();
         String email=Email.getText();
         String Password = pass.getText();
-        String Location =location.getText();
+        String Location =address.getText();
         String phone = num.getText();
         String Gender = gender.getValue();
         LocalDate Date=date.getValue();
-//        Image Image=image.getImage();
-
+        String image=null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "admin", "admin" + "");
-            Statement stmt = con.createStatement();
-            String test = "call addPerson("+"'"+username+"',"+"'"+fname+"','"+num+"'"+"''"+location+"','"+date+"','"+Email+"'"+"'"+gender+"','"+pass+"','"+image+"')";
-            ResultSet rs = stmt.executeQuery(test);
-//            InputStream is=rs.getBinaryStream("image");
-//            OutputStream os=new FileOutputStream(new File("photo.jpg"));
-//            byte[] content =new byte[1024];
-//            int size=0;
-//            while ((size=is.read(content))!=-1){
-//                os.write(content,0,size);
-//            }
-//            os.close();
-//            is.close();
-//            image=new  Image("file:photo.jpg",100,150,true);
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            CallableStatement stmt = con.prepareCall("{call addPersonAsClient(?, ?,?,?,?,?,?,?,?)}");
 
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+            stmt.setString(1,Username);
+            stmt.setString(2,Name);
+            stmt.setString(6,email);
+            stmt.setString(8,Password);
+            stmt.setString(4,Location);
+            stmt.setString(3,phone);
+            stmt.setString(7,Gender);
+            stmt.setDate(5, java.sql.Date.valueOf(Date));
+            stmt.setString(9,image);
+
+
+
+            if(stmt.executeUpdate()>0) {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION.INFORMATION);
+                alert.setTitle(" information");
+                alert.setHeaderText(null);
+                alert.setContentText("succ added!");
+                alert.showAndWait();
+            }
+
+        } catch (Exception e) {
+
+            System.out.println("Error in Database:execQuery" +e.getLocalizedMessage());
+            Logger.getLogger(Person.class.getName()).log(Level.SEVERE, null, e);
         }
     }
+
 
 
 
@@ -133,13 +144,13 @@ public class SignUpParent implements Initializable {
             no_username.setTextFill(javafx.scene.paint.Color.web("blue"));
             flag = false;
         } else
-            no_fname.setText("");
+            no_username.setText("");
         if (fname.getText().isEmpty()) {
-            no_fname.setText("Please enter your name");
-            no_fname.setTextFill(javafx.scene.paint.Color.web("blue"));
+            no_name.setText("Please enter your name");
+            no_name.setTextFill(javafx.scene.paint.Color.web("blue"));
             flag = false;
         } else
-            no_fname.setText("");
+            no_name.setText("");
         if (Email.getText().isEmpty()) {
             no_email.setText("Please enter your Email");
             no_email.setTextFill(javafx.scene.paint.Color.web("blue"));
@@ -150,6 +161,8 @@ public class SignUpParent implements Initializable {
             no_pass.setText("Please enter your password");
             no_pass.setTextFill(javafx.scene.paint.Color.web("blue"));
             flag = false;
+        }else{
+            no_pass.setText("");
         }
 
         if (num.getText().isEmpty()) {
@@ -164,23 +177,23 @@ public class SignUpParent implements Initializable {
             flag = false;
         } else
             no_gender.setText("");
-        if(location.getText().isEmpty()) {
-            no_location.setText("please enter your location");
-            no_location.setTextFill(Color.web("blue"));
+        if(address.getText().isEmpty()) {
+            no_address.setText("please enter your address");
+            no_address.setTextFill(Color.web("blue"));
             flag = false;
         }
         else
-            no_location.setText("");
+            no_address.setText("");
 
         if(date.getEditor().getText().isEmpty()) {
-            no_location.setText("please enter your birthdate");
-            no_location.setTextFill(Color.web("blue"));
+            no_date.setText("please enter your birthdate");
+            no_date.setTextFill(Color.web("blue"));
             flag = false;
         }
         else
-            no_location.setText("");
-        if (gender.getValue() != null  && !username.getText().isEmpty() && !fname.getText().isEmpty() && !Email.getText().isEmpty() && !num.getText().isEmpty() && !pass.getText().isEmpty()
-                &&!location.getText().isEmpty())
+            no_date.setText("");
+        if (gender.getValue() != null &&date.getValue()!=null  && !username.getText().isEmpty() && !fname.getText().isEmpty() && !Email.getText().isEmpty() && !num.getText().isEmpty() && !pass.getText().isEmpty()
+                &&!address.getText().isEmpty())
             flag = true;
         return flag;
     }

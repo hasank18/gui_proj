@@ -15,20 +15,20 @@
 
 <AnchorPane fx:id="switch_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1008.0" prefWidth="1922.0" style="-fx-background-color: #white;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignUpParent">
     <children>
-      <ImageView fitHeight="1008.0" fitWidth="1911.0" layoutX="1.0" opacity="0.75">
-         <image>
-            <Image url="@../resources/family-sun-field.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="102.0" fitWidth="64.0" layoutX="14.0" layoutY="-5.0" opacity="0.31">
-         <image>
-            <Image url="@../resources/iconfinder_back_126585.png" />
-         </image>
-      </ImageView>
+        <ImageView fitHeight="1008.0" fitWidth="1911.0" layoutX="1.0" opacity="0.75">
+            <image>
+                <Image url="@../resources/family-sun-field.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="102.0" fitWidth="64.0" layoutX="14.0" layoutY="-5.0" opacity="0.31">
+            <image>
+                <Image url="@../resources/iconfinder_back_126585.png" />
+            </image>
+        </ImageView>
         <Button fx:id="Back_Page" layoutX="46.0" layoutY="27.0" mnemonicParsing="false" onAction="#Back_Page" prefHeight="38.0" prefWidth="112.0" style="-fx-background-radius: 15,16;" text="Back Page" textFill="#11576b">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></Button>
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font></Button>
         <Label layoutX="736.0" layoutY="40.0" text="SIGN UP As Parent" textFill="#11576b">
             <font>
                 <Font name="System Bold" size="34.0" />
@@ -37,18 +37,18 @@
 
         <VBox layoutX="210.0" layoutY="166.0" opacity="0.65" prefHeight="582.0" prefWidth="407.0" style="-fx-background-color: white; -fx-background-radius: 40,40;" AnchorPane.bottomAnchor="260.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="1305.0" AnchorPane.topAnchor="166.0">
             <children>
-                <Label fx:id="no_fname" prefHeight="21.0" prefWidth="266.0">
+                <Label fx:id="no_username" prefHeight="21.0" prefWidth="266.0">
                     <VBox.margin>
                         <Insets />
                     </VBox.margin>
                 </Label>
-                <TextField fx:id="fname" promptText="username" style="-fx-background-radius: 20,30;">
+                <TextField fx:id="username" promptText="username" style="-fx-background-radius: 20,30;">
                     <VBox.margin>
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                     </VBox.margin>
                 </TextField>
-                <Label fx:id="no_lname" layoutX="10.0" layoutY="125.0" prefHeight="21.0" prefWidth="264.0" />
-                <TextField fx:id="Lname" promptText="name" style="-fx-background-radius: 20,30;">
+                <Label fx:id="no_name" layoutX="10.0" layoutY="125.0" prefHeight="21.0" prefWidth="264.0" />
+                <TextField fx:id="fname" promptText="name" style="-fx-background-radius: 20,30;">
                     <VBox.margin>
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                     </VBox.margin>
@@ -65,24 +65,24 @@
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                     </VBox.margin>
                 </PasswordField>
-                <Label fx:id="no_pass2" layoutX="10.0" layoutY="266.0" prefHeight="21.0" prefWidth="274.0" />
-                <PasswordField fx:id="confirm_pass" promptText="address" style="-fx-background-radius: 20,30;">
+                <Label fx:id="no_address" layoutX="10.0" layoutY="266.0" prefHeight="21.0" prefWidth="274.0" />
+                <TextField fx:id="address" promptText="address" style="-fx-background-radius: 20,30;">
                     <VBox.margin>
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                     </VBox.margin>
-                </PasswordField>
+                </TextField>
                 <Label fx:id="no_num" layoutX="10.0" layoutY="313.0" prefHeight="21.0" prefWidth="229.0" />
                 <TextField fx:id="num" promptText="Mobile Number" style="-fx-background-radius: 20,30;">
                     <VBox.margin>
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                     </VBox.margin>
                 </TextField>
-                <Label fx:id="no_location" layoutX="10.0" layoutY="10.0" prefHeight="21.0" prefWidth="253.0" />
-            <DatePicker fx:id="date" promptText="birthdate">
-               <VBox.margin>
-                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-               </VBox.margin>
-            </DatePicker>
+                <Label fx:id="no_date" layoutX="10.0" layoutY="10.0" prefHeight="21.0" prefWidth="253.0" />
+                <DatePicker fx:id="date" promptText="birthdate">
+                    <VBox.margin>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                    </VBox.margin>
+                </DatePicker>
                 <Label fx:id="no_gender" layoutX="10.0" layoutY="78.0" prefHeight="21.0" prefWidth="196.0" />
                 <ComboBox fx:id="gender" editable="true" prefHeight="31.0" prefWidth="120.0" promptText="Gender">
                     <VBox.margin>
@@ -91,18 +91,8 @@
                 </ComboBox>
             </children>
         </VBox>
-        <!--<EmojiOneView fx:id="back" fill="#2c52fb" glyphName="BACK" layoutX="14.0" layoutY="30.0" onMouseClicked="#backevent" size="30" strokeType="OUTSIDE" strokeWidth="0.0" />-->
         <Button fx:id="Continue" alignment="CENTER" cache="true" cacheHint="QUALITY" layoutX="343.0" layoutY="764.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#continueHandleEvent" prefHeight="38.0" prefWidth="147.0" style="-fx-background-radius: 16.4, 15;" text="CONTINUE" textFill="#11576b" textOverrun="LEADING_ELLIPSIS">
-            <!--<effect>-->
-            <!--<Lighting>-->
-            <!--<bumpInput>-->
-            <!--<Shadow />-->
-            <!--</bumpInput>-->
-            <!--<light>-->
-            <!--<Light.Distant />-->
-            <!--</light>-->
-            <!--</Lighting>-->
-            <!--</effect>-->
+
             <font>
                 <Font name="System Bold Italic" size="15.0" />
             </font>
@@ -110,16 +100,16 @@
                 <Insets />
             </opaqueInsets>
         </Button>
-      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="314.0" layoutY="-3.0">
-         <image>
-            <Image url="@../resources/login.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="38.0" fitWidth="37.0" layoutX="440.0" layoutY="119.0">
-         <image>
-            <Image url="@../resources/iconfinder_camera_115759.png" />
-         </image>
-      </ImageView>
-        
+        <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="314.0" layoutY="-3.0">
+            <image>
+                <Image url="@../resources/login.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="38.0" fitWidth="37.0" layoutX="440.0" layoutY="119.0">
+            <image>
+                <Image url="@../resources/iconfinder_camera_115759.png" />
+            </image>
+        </ImageView>
+
     </children>
 </AnchorPane>
