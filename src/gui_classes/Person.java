@@ -1,14 +1,16 @@
 package gui_classes;
 
+import javafx.scene.image.Image;
+
 import java.sql.Blob;
 import java.sql.Date;
 
 public abstract class  Person {
     protected String username,name,phone,address,email,gender,password;
     protected Date birthdate;
-    protected Blob image;
+    protected Image image;
 
-    public Person(String username, String name, String phone,String address, String email, String gender, String password, Date birthdate, Blob image) {
+    public Person(String username, String name, String phone,String address, String email, String gender, String password, Date birthdate, Image image) {
         this.username = username;
         this.name = name;
         this.phone = phone;
@@ -78,11 +80,11 @@ public abstract class  Person {
         this.birthdate = birthdate;
     }
 
-    public Blob getImage() {
+    public Image getImage() {
         return image;
     }
 
-    public void setImage(Blob image) {
+    public void setImage(Image image) {
         this.image = image;
     }
 

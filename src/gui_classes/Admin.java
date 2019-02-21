@@ -1,5 +1,7 @@
 package gui_classes;
 
+import javafx.scene.image.Image;
+
 import java.sql.Blob;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -11,7 +13,7 @@ import java.util.ArrayList;
     private ArrayList<BabySitter> baby_sitters;
     private ArrayList<Payment> payments;
 
-    private Admin(int ID,String username, String name, String phone, String address,String email, String gender, String password, Date birthdate, Blob image) {
+    private Admin(int ID,String username, String name, String phone, String address,String email, String gender, String password, Date birthdate, Image image) {
         super(username, name, phone,address ,email, gender, password, birthdate, image);
         payments = new ArrayList<>();
         baby_sitters = new ArrayList<>();
@@ -44,7 +46,7 @@ import java.util.ArrayList;
      public void setBaby_sitters(ArrayList<BabySitter> baby_sitters) {
          this.baby_sitters = baby_sitters;
      }
-     public void addBabySitter(int ID,String username, String name, String phone, String email, String gender, String password, Date birthdate, Blob image,double price_hour){
+     public void addBabySitter(int ID,String username, String name, String phone, String email, String gender, String password, Date birthdate, Image image,double price_hour){
         baby_sitters.add(new BabySitter(ID,username,name,phone,address,email,gender,password,birthdate,image,price_hour));
      }
      public void addClient(Client client){

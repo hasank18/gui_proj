@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SplitPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -60,8 +61,8 @@ public class BabySitterPage implements Initializable {
                 String email = rs.getString("email");
                 String gender = rs.getString("gender");
                 String password = rs.getString("password");
-                Blob image = rs.getBlob("image");
-                babySitter = new BabySitter(ID, username, name, phone, address, email, gender, password, birthdate, image, hour_price);
+                String  image = rs.getString("image");
+                babySitter = new BabySitter(ID, username, name, phone, address, email, gender, password, birthdate, new Image(image), hour_price);
             }
             rs = stmt.executeQuery("select * from SitterBooking where BabySitter_idBabySitter=" + ID);
             while (rs.next()) {

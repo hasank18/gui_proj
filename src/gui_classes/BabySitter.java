@@ -1,5 +1,6 @@
 package gui_classes;
 
+import javafx.scene.image.Image;
 import org.controlsfx.control.Notifications;
 
 import java.sql.Blob;
@@ -17,7 +18,7 @@ public class BabySitter extends Person implements Observer {
     private ArrayList<Payment> payments;
     private boolean online = false;
 
-    public BabySitter(int ID, String username, String name, String phone, String address, String email, String gender, String password, Date birthdate, Blob image, double price_hour) {
+    public BabySitter(int ID, String username, String name, String phone, String address, String email, String gender, String password, Date birthdate, Image image, double price_hour) {
         super(username, name, phone, address, email, gender, password, birthdate, image);
         this.price_hour = price_hour;
         bookings = new ArrayList<>();
