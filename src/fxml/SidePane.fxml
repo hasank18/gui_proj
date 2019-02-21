@@ -4,23 +4,18 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SidePane">
+<VBox prefHeight="700.0" prefWidth="200.0" style="-fx-background-color: #e5f7ff;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SidePane">
    <children>
       <ImageView fitHeight="220.0" fitWidth="200.0" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../resources/family-sun-field.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="105.0" fitWidth="115.0" layoutX="43.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../resources/default_profile_picture.png" />
-         </image>
-      </ImageView>
-      <JFXButton layoutY="220.0" minHeight="70.0" mnemonicParsing="false" prefWidth="200.0" text="Button" />
-      <JFXButton layoutY="370.0" minHeight="70.0" mnemonicParsing="false" prefWidth="200.0" text="Button" />
-      <JFXButton layoutX="1.0" layoutY="300.0" minHeight="70.0" mnemonicParsing="false" prefWidth="200.0" text="Button" />
-      <JFXButton layoutX="1.0" layoutY="530.0" minHeight="70.0" mnemonicParsing="false" prefWidth="200.0" text="Button" />
+      <JFXButton layoutX="1.0" layoutY="247.0" minHeight="70.0" mnemonicParsing="false" onAction="#MainPage" prefWidth="200.0" ripplerFill="BLACK"  stylesheets="@../CSS/Button.css" text="Main Page" />
+      <JFXButton layoutX="1.0" layoutY="437.0" minHeight="70.0" mnemonicParsing="false" onAction="#GoToSettings" prefWidth="200.0"  stylesheets="@../CSS/Button.css" text="Seetings" />
+      <JFXButton layoutY="340.0" minHeight="70.0" mnemonicParsing="false" onAction="#GoToBooking" prefWidth="200.0" ripplerFill="BLACK" stylesheets="@../CSS/Button.css" text="See current Booking" />
+      <JFXButton accessibleRole="MENU_BUTTON" layoutX="1.0" layoutY="530.0" minHeight="70.0" mnemonicParsing="false" onAction="#LogOut" prefWidth="200.0" stylesheets="@../CSS/Button.css" text="Log Out" />
    </children>
-</AnchorPane>
+</VBox>

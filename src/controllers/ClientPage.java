@@ -5,17 +5,18 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import gui_classes.Client;
 import gui_classes.CustomData;
-import javafx.fxml.FXML;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ListView;
-import javafx.scene.control.SplitPane;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -25,6 +26,8 @@ public class ClientPage implements Initializable {
     public JFXHamburger hamburger;
     public JFXDrawer drawer;
     public ListView<Custom> listView;
+    public AnchorPane anchorPane;
+    public AnchorPane anchorPane1;
     Connection con;
     Client client;
     private int ID;
@@ -33,8 +36,11 @@ public class ClientPage implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            AnchorPane SidePane = FXMLLoader.load(getClass().getResource("../fxml/SidePane.fxml"));
+            VBox SidePane = FXMLLoader.load(getClass().getResource("../fxml/SidePane.fxml"));
             drawer.setSidePane(SidePane);
+            SidePane.getChildren().get(1).setOnMouseClicked(event -> {
+
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -112,5 +118,29 @@ public class ClientPage implements Initializable {
             e.printStackTrace();
         }
 
+    }
+
+
+    public void MainPage(MouseEvent event) {
+
+    }
+
+    public void GoToSettings(MouseEvent event) {
+    }
+
+    public void GoToBooking(MouseEvent event) {
+    }
+
+    public void LogOut(MouseEvent event) throws IOException {
+        try {
+            Parent parent = FXMLLoader.load(getClass().getResource("../fxml/LoginPage.fxml"));
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage(),stage1 = (Stage)anchorPane1.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+            stage1.close();
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
     }
 }
