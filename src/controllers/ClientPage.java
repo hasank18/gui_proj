@@ -5,7 +5,6 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import gui_classes.Client;
 import gui_classes.CustomData;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -81,7 +80,7 @@ public class ClientPage implements Initializable {
             e.printStackTrace();
         }
         try {
-            VBox SidePane = FXMLLoader.load(getClass().getResource("../fxml/SidePane.fxml"));
+            VBox SidePane = FXMLLoader.load(getClass().getResource("fxml/SidePaneClient.fxml"));
             drawer.setSidePane(SidePane);
             SidePane.getChildren().get(1).setOnMouseClicked(event -> {
                 anchorPane.getChildren().setAll(listView);
@@ -162,10 +161,11 @@ public class ClientPage implements Initializable {
                 String email = rs.getString("email");
                 String price_hour = rs.getString("price_hour");
                 int rating = 2;
-                Image image = new Image(rs.getString("image"));
+                String imagePath = rs.getString("image");
+                Image image = new Image(imagePath);
                 System.out.println(rs.getString("image"));
                 Custom custom = new Custom();
-                custom.updateItem(new CustomData(name,phone,address,birthdate.toString(),email,price_hour,rating,image));
+                custom.updateItem(new CustomData(name,phone,address,birthdate.toString(),email,price_hour,rating,new Image(imagePath)));
                 listView.getItems().add(custom);
             }
         } catch (Exception e) {

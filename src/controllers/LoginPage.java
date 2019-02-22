@@ -20,6 +20,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import sample.Main;
 
 import java.io.IOException;
 import java.net.URL;
@@ -185,6 +186,7 @@ public class LoginPage implements Initializable {
                 rs3 = stmt2.executeQuery("select Person_username from admin where Person_username='"+UserName+"'");
                 if(rs3.next()) {
                     System.out.println("found admin");
+                    Main.setUserName(username.getText());
                     return true;
                 }
                 else{
@@ -218,6 +220,7 @@ public class LoginPage implements Initializable {
                 if(rs3.next()){
                     System.out.println("found client");
                     ID = rs3.getInt(1);
+                    Main.setUserName(username.getText());
                     return true;
                 }
                 else{
@@ -252,6 +255,7 @@ public class LoginPage implements Initializable {
                     rs3 = stmt2.executeQuery("select * from BabySitter where Person_username='"+UserName+"'");
                     if(rs3.next()) {
                         ID = rs3.getInt(1);
+                        Main.setUserName(username.getText());
                         return true;
                     }
                     else{

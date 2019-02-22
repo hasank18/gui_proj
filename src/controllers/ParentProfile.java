@@ -65,7 +65,7 @@ public class ParentProfile implements Initializable {
         String edit = "call updatename('" +client.getID() + "','" + event.getNewValue() + "')";
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "admin", "admin" + "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "root", "" + "");
             Statement stmt = con.createStatement();
             stmt.executeQuery(edit);
         } catch (Exception e) {
@@ -79,7 +79,7 @@ public class ParentProfile implements Initializable {
         String edit = "call updateemail('" + client.getID() + "','" + event.getNewValue() + "')";
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "admin", "admin" + "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "root", "" + "");
             Statement stmt = con.createStatement();
             stmt.executeQuery(edit);
         } catch (Exception e) {
@@ -93,7 +93,7 @@ public class ParentProfile implements Initializable {
         String edit = "call updatepass('" + client.getID() + "','" + event.getNewValue() + "')";
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "admin", "admin" + "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "root", "" + "");
             Statement stmt = con.createStatement();
             stmt.executeQuery(edit);
         } catch (Exception e) {
@@ -107,7 +107,7 @@ public class ParentProfile implements Initializable {
         String edit = "call updategender('" + client.getID() + "','" + event.getNewValue() + "')";
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "admin", "admin" + "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "root", "" + "");
             Statement stmt = con.createStatement();
             stmt.executeQuery(edit);
         } catch (Exception e) {
@@ -121,7 +121,7 @@ public class ParentProfile implements Initializable {
         String edit = "call updateBirthdate('" + client.getID() + "','" + event.getNewValue() + "')";
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "admin", "admin" + "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "root", "" + "");
             Statement stmt = con.createStatement();
             stmt.executeQuery(edit);
         } catch (Exception e) {
@@ -135,7 +135,7 @@ public class ParentProfile implements Initializable {
         String edit = "call updateaddress('" + client.getID() + "','" + event.getNewValue() + "')";
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "admin", "admin" + "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "root", "" + "");
             Statement stmt = con.createStatement();
             stmt.executeQuery(edit);
         } catch (Exception e) {
@@ -149,7 +149,7 @@ public class ParentProfile implements Initializable {
         String edit = "call updatenum('" + client.getID() + "','" + event.getNewValue() + "')";
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "admin", "admin" + "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "root", "" + "");
             Statement stmt = con.createStatement();
             stmt.executeQuery(edit);
         } catch (Exception e) {
@@ -163,7 +163,7 @@ public class ParentProfile implements Initializable {
 //        String edit = "call updateimage('" + babysitter.getID() + "','" + event.getNewValue() + "')";
 //        try {
 //            Class.forName("com.mysql.jdbc.Driver");
-//            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "admin", "admin" + "");
+//            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "root", "" + "");
 //            Statement stmt = con.createStatement();
 //            stmt.executeQuery(edit);
 //        } catch (Exception e) {
@@ -197,7 +197,7 @@ public class ParentProfile implements Initializable {
         table.getItems().remove(table.getSelectionModel().getSelectedItem());
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "admin", "admin" + "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "root", "" + "");
             Statement stmt = con.createStatement();
             stmt.executeQuery(deleteBabysitter);
         } catch (Exception e) {
@@ -213,7 +213,7 @@ public class ParentProfile implements Initializable {
                 pst = con.prepareStatement("select *from Person");
                 ResultSet rs = pst.executeQuery();
                 while (rs.next()) {
-                    table.getItems().add(new Client(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getDate(9),rs.getBlob(10)));
+                    table.getItems().add(new Client(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getDate(9),new Image(rs.getString(10))));
                 }
             } catch (SQLException e1) {
 
@@ -237,10 +237,10 @@ public class ParentProfile implements Initializable {
                     String gender = rs.getString(7);
                     String password = rs.getString(8);
                     Date date = rs.getDate(9);
-                    Blob imageBlob = rs.getBlob(10);
+                    String image = rs.getString(10);
                     double price=rs.getDouble(11);
 
-                    table.getItems().add(new Client(pid, username, fname, phonenum, address, email, gender, password, date,imageBlob));
+                    table.getItems().add(new Client(pid, username, fname, phonenum, address, email, gender, password, date,new Image(image)));
                 }
             } catch(SQLException e1){
                 Logger.getLogger(BabySitterProfile.class.getName()).log(Level.SEVERE, null, pst);

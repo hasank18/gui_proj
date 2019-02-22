@@ -52,8 +52,6 @@ public class EditProfile implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-    }
-    public void getData(){
         DBconnection dBconnection = new DBconnection();
         Connection con = dBconnection.getConnection();
         try {
@@ -71,6 +69,9 @@ public class EditProfile implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+    }
+    public void getData(){
     }
 
     public void Update(ActionEvent event) {

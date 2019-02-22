@@ -48,6 +48,9 @@ public class Custom extends AnchorPane {
 
     protected void updateItem(CustomData customData) {
         circle.setImage(customData.getImage());
+
+        loadFXML(); //try this
+
         name.setText(name.getText()+customData.getName1());
         phone.setText(phone.getText()+customData.getPhone1());
         address.setText(address.getText()+customData.getAddress1());
