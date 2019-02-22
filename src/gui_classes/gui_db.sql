@@ -238,8 +238,8 @@ DELIMITER ;
 DELIMITER $$
 create procedure addSitterBooking(in date Date, in Client_idclient int,in BabySitter_idBabySitter int ,in sitter_payment_idsitter_payment int)
 begin
-insert into SitterBooking(date,Client_idclient,BabySitter_idBabySitter,sitter_payment_idsitter_payment)
-values(date,Client_idclient,BabySitter_idBabySitter,sitter_payment_idsitter_payment);
+insert into SitterBooking(date,Client_idclient,BabySitter_idBabySitter,sitter_payment_idsitter_payment,answer)
+values(date,Client_idclient,BabySitter_idBabySitter,sitter_payment_ids,false);
 end$$
 DELIMITER ;
 
@@ -499,3 +499,17 @@ drop procedure addPersonAsBabySitter;
 drop table Client;
 drop table Client;
 
+
+-- -----------------------------------
+-- hanin 3mele run lahole yalle tahet
+-- ----------------------------------
+
+alter table SitterBooking add answer boolean;
+update SitterBooking set answer = false;
+
+create view BookingData as select * from Person,SitterBooking,BabySitter where BabySitter.idBabySitter = SitterBooking.BabySitter_idBabySitter;
+
+
+update BabySitterView set image = 'file:../resources/default_profile_picture.png' ;
+alter table sitter_payment drop recieved_sitter;
+alter table sitter_payment drop recieved_admin;
