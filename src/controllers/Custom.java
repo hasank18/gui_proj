@@ -1,35 +1,30 @@
 package controllers;
 
 import gui_classes.CustomData;
-import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 import org.controlsfx.control.Rating;
 
 import java.io.IOException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ResourceBundle;
 
 public class Custom extends AnchorPane {
+    static String clientUsername;
+    static String price_hour1;
     @FXML
     Label name,phone,address,age,price_hour;
     @FXML
     Rating rating;
     @FXML
-    ImageView circle;
+    ImageView image;
+    @FXML
+    Button button;
 
     public Custom() {
         loadFXML();
@@ -47,16 +42,26 @@ public class Custom extends AnchorPane {
     }
 
     protected void updateItem(CustomData customData) {
-        circle.setImage(customData.getImage());
-
-        loadFXML(); //try this
-
+//        image.setImage(customData.getImage());
         name.setText(name.getText()+customData.getName1());
         phone.setText(phone.getText()+customData.getPhone1());
         address.setText(address.getText()+customData.getAddress1());
         age.setText(age.getText()+customData.getAge1());
         price_hour.setText(price_hour.getText()+customData.getPrice_hour1());
         rating.setRating(customData.getRating1());
+        button.setOnMouseClicked(e->{
+            Parent parent = null;
+            try {
+                parent = FXMLLoader.load(getClass().getResource("../fxml/PaymentMethod.fxml"));
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+            clientUsername = customData.getUsername();
+            price_hour1 = price_hour.getText();
+        });
     }
-
 }

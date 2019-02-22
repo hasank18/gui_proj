@@ -16,9 +16,9 @@
         <Label fx:id="phone" layoutX="196.0" layoutY="163.0" text="Phone:" />
         <Label fx:id="address" layoutX="186.0" layoutY="110.0" text="Address:" />
         <Label fx:id="price_hour" layoutX="196.0" layoutY="40.0" text="Price:" />
-        <Button layoutX="415.0" layoutY="118.0" mnemonicParsing="false" text="Continue to Booking" />
+        <Button fx:id="button" layoutX="415.0" layoutY="118.0" mnemonicParsing="false"  text="Continue to Booking" />
         <Rating fx:id="rating" layoutX="390.0" layoutY="31.0" prefHeight="33.0" prefWidth="176.0" />
-      <ImageView fx:id="circle" cache="true" fitHeight="118.0" fitWidth="130.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="image" cache="true" fitHeight="118.0" fitWidth="130.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/iconfinder_admin_87402.png" />
          </image>

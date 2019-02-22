@@ -51,7 +51,6 @@ public class EditProfile implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         DBconnection dBconnection = new DBconnection();
         Connection con = dBconnection.getConnection();
         try {
@@ -62,7 +61,12 @@ public class EditProfile implements Initializable {
                 address.setText(rs.getString("address"));
                 phone.setText(rs.getString("phone"));
                 birthdate.setText(rs.getDate("birthdate").toString());
-                image.setImage(new Image(rs.getString("image")));
+                Image image1 = new Image(String.valueOf(getClass().getResource(rs.getString("image"))));
+                if(image1!=null)
+                    image.setImage(image1);
+                else
+                    image.setImage(new Image("file:../resources/default_profile_picture.png"));
+                profilePicture.setText(rs.getString("image"));
                 password.setText(rs.getString("password"));
                 email.setText(rs.getString("email"));
             }
@@ -79,9 +83,11 @@ public class EditProfile implements Initializable {
         Connection con = dBconnection.getConnection();
         try {
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("update Person set name='"+name.getText()+"',address='"+address.getText()+"',phone='"+phone.getText()+"',birthdate='"+birthdate.getText()+"',image='"+profilePicture.getText()+"',password='"+password.getText()+"',email='"+email.getText()+"' where username='"+Main.getUserName()+"'");
+            String data = "update Person set name='"+name.getText()+"',address='"+address.getText()+"',phone='"+phone.getText()+"',birthdate='"+birthdate.getText()+"',image='"+profilePicture.getText()+"',password='"+password.getText()+"',email='"+email.getText()+"' where username='"+Main.getUserName()+"'";
+            stmt.executeUpdate(data);
+            System.out.println(data);
         }catch (SQLException e){
-            e.getErrorCode();
+            e.printStackTrace();
         }
     }
 

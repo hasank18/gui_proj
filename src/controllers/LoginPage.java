@@ -112,7 +112,6 @@ public class LoginPage implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/ClientPage.fxml"));
             Parent parent= fxmlLoader.load();
             ClientPage clientPage = fxmlLoader.getController();
-            clientPage.getData();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -288,17 +287,14 @@ public class LoginPage implements Initializable {
             pauseTransition.play();
 
             if (checkInfo() && loginAsClient()) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/BookingSitter.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/ClientPage.fxml"));
                 Parent parent = (Parent) loader.load();
-                BookingSitter booking_sitter = loader.getController();
-                booking_sitter.setID(ID);
-                booking_sitter.setData();
                 Scene scene = new Scene(parent);
                 Stage stage = (Stage) ((Node) keyEvent.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();
             } else if (checkInfo() && loginAsBabysitter()) {
-                Parent parent = FXMLLoader.load(getClass().getResource("../fxml/Babysitter.fxml"));
+                Parent parent = FXMLLoader.load(getClass().getResource("../fxml/BabysitterPage.fxml"));
                 Scene scene = new Scene(parent);
                 Stage stage = (Stage) ((Node) keyEvent.getSource()).getScene().getWindow();
                 stage.setScene(scene);

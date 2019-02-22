@@ -63,6 +63,7 @@ public class ClientPage implements Initializable {
             String test = "select * from BabySitterView";
             ResultSet rs = stmt.executeQuery(test);
             while(rs.next()) {
+                String username = rs.getString("Person_username");
                 String name = rs.getString("name");
                 String phone = rs.getString("phone");
                 String address = rs.getString("address");
@@ -71,20 +72,19 @@ public class ClientPage implements Initializable {
                 String price_hour = rs.getString("price_hour");
                 int rating = 2;
                 Image image = new Image(rs.getString("image"));
-                System.out.println(rs.getString("image"));
+                System.out.println(image.toString());
                 Custom custom = new Custom();
-                custom.updateItem(new CustomData(name,phone,address,birthdate.toString(),email,price_hour,rating,image));
+                CustomData customData = new CustomData(username,name,phone,address,birthdate.toString(),email,price_hour,rating,image);
+                custom.updateItem(customData);
                 listView.getItems().add(custom);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            VBox SidePane = FXMLLoader.load(getClass().getResource("fxml/SidePaneClient.fxml"));
+            VBox SidePane = FXMLLoader.load(getClass().getResource("../fxml/SidePaneClient.fxml"));
             drawer.setSidePane(SidePane);
             SidePane.getChildren().get(1).setOnMouseClicked(event -> {
-                anchorPane.getChildren().setAll(listView);
-                getData();
             });
             SidePane.getChildren().get(2).setOnMouseClicked(e ->{
                 try {
@@ -103,7 +103,7 @@ public class ClientPage implements Initializable {
             });
             SidePane.getChildren().get(3).setOnMouseClicked(e ->{
                 try {
-                    Parent parent = FXMLLoader.load(getClass().getResource("../fxml/CurrentBooking.fxml"));
+                    Parent parent = FXMLLoader.load(getClass().getResource("../fxml/checkBookingClient.fxml"));
                     Scene scene = new Scene(parent);
                     Stage stage = new Stage(),stage1 = (Stage)anchorPane1.getScene().getWindow();
                     stage.setScene(scene);
@@ -144,33 +144,5 @@ public class ClientPage implements Initializable {
 
     public ClientPage getController() {
         return this;
-    }
-
-    public void getData(){
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_gui", "root", "" + "");
-            Statement stmt = con.createStatement();
-            String test = "select * from BabySitterView";
-            ResultSet rs = stmt.executeQuery(test);
-            while(rs.next()) {
-                String name = rs.getString("name");
-                String phone = rs.getString("phone");
-                String address = rs.getString("address");
-                Date birthdate = rs.getDate("birthdate");
-                String email = rs.getString("email");
-                String price_hour = rs.getString("price_hour");
-                int rating = 2;
-                String imagePath = rs.getString("image");
-                Image image = new Image(imagePath);
-                System.out.println(rs.getString("image"));
-                Custom custom = new Custom();
-                custom.updateItem(new CustomData(name,phone,address,birthdate.toString(),email,price_hour,rating,new Image(imagePath)));
-                listView.getItems().add(custom);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
     }
 }

@@ -3,11 +3,11 @@ package gui_classes;
 import javafx.scene.image.Image;
 
 public class CustomData {
-    String name1,phone1,address1,age1,email1,price_hour1;
+    String username,name1,phone1,address1,age1,email1,price_hour1;
     int rating1;
     Image image;
 
-    public CustomData(String name1, String phone1, String address1, String age1, String email1, String price_hour1, int rating1, Image image) {
+    public CustomData(String username,String name1, String phone1, String address1, String age1, String email1, String price_hour1, int rating1, Image image) {
         this.name1 = name1;
         this.phone1 = phone1;
         this.address1 = address1;
@@ -16,6 +16,7 @@ public class CustomData {
         this.price_hour1 = price_hour1;
         this.rating1 = rating1;
         this.image = image;
+        this.username=username;
     }
 
     public String getName1() {
@@ -76,5 +77,9 @@ public class CustomData {
 
     public Image getImage() {
         return image;
+    }
+
+    public String getUsername() {
+        return username;
     }
 }
