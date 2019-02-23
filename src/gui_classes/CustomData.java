@@ -1,13 +1,16 @@
 package gui_classes;
 
+import javafx.event.EventHandler;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 
 public class CustomData {
     String username,name1,phone1,address1,age1,email1,price_hour1;
     int rating1;
     Image image;
+    EventHandler<MouseEvent> eventEventHandler;
 
-    public CustomData(String username,String name1, String phone1, String address1, String age1, String email1, String price_hour1, int rating1, Image image) {
+    public CustomData(String username,String name1, String phone1, String address1, String age1, String email1, String price_hour1, int rating1, Image image,EventHandler<MouseEvent> eventEventHandler) {
         this.name1 = name1;
         this.phone1 = phone1;
         this.address1 = address1;
@@ -17,6 +20,7 @@ public class CustomData {
         this.rating1 = rating1;
         this.image = image;
         this.username=username;
+        this.eventEventHandler = eventEventHandler;
     }
 
     public String getName1() {
@@ -81,5 +85,13 @@ public class CustomData {
 
     public String getUsername() {
         return username;
+    }
+
+    public EventHandler<MouseEvent> getEventEventHandler() {
+        return eventEventHandler;
+    }
+
+    public void setEventEventHandler(EventHandler<MouseEvent> eventEventHandler) {
+        this.eventEventHandler = eventEventHandler;
     }
 }

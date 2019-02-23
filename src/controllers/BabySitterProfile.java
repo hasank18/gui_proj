@@ -1,8 +1,5 @@
 package controllers;
 
-
-
-
 import gui_classes.BabySitter;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,7 +7,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
 import sample.DBconnection;
 import javafx.event.ActionEvent;
 import java.net.URL;
@@ -220,7 +216,7 @@ import java.util.logging.Logger;
                     pst = con.prepareStatement("select *from Person");
                     ResultSet rs = pst.executeQuery();
                     while (rs.next()) {
-                        table.getItems().add(new BabySitter(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getDate(9),new Image(rs.getString(10)),rs.getDouble(11)));
+                        table.getItems().add(new BabySitter(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getDate(9),new Image(rs.getString(10)),rs.getDouble(11),rs.getDouble("recieved_money")));
                     }
                 } catch (SQLException e1) {
 
@@ -246,8 +242,9 @@ import java.util.logging.Logger;
                         Date date = rs.getDate(9);
                         String image = rs.getString(10);
                         double price=rs.getDouble(11);
+                        double recMoney = rs.getDouble("recieved_money");
 
-                        table.getItems().add(new BabySitter(pid, username, fname, phonenum, address, email, gender, password, date,new Image(image),price));
+                        table.getItems().add(new BabySitter(pid, username, fname, phonenum, address, email, gender, password, date,new Image(image),price,recMoney));
                     }
                 } catch(SQLException e1){
                     Logger.getLogger(controllers.BabySitterProfile.class.getName()).log(Level.SEVERE, null, pst);

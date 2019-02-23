@@ -2,13 +2,16 @@ package controllers;
 
 import gui_classes.CustomData;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.controlsfx.control.Notifications;
 import sample.DBconnection;
 import sample.Main;
 
@@ -21,7 +24,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class CheckBookingClient implements Initializable {
-    public ListView<Custom2> listView;
+    public ListView listView;
     public AnchorPane anchorPane;
 
     @Override
@@ -33,12 +36,19 @@ public class CheckBookingClient implements Initializable {
             while(rs.next()){
                 String name =rs.getString("name");
                 boolean answer = rs.getBoolean("answer");
-                Custom2 custom2 = new Custom2();
-                if(answer == false)
-                custom2.updateItem(name,"Waiting Responce");
-                else
-                    custom2.updateItem(name,"Accepted");
-                listView.getItems().add(custom2);
+                boolean finished = rs.getBoolean("finished");
+                int cid = rs.getInt("Client_idclient");
+                int bid = rs.getInt("BabySitter_idBabySitter");
+                if(answer == false) {
+                    Custom2 custom2 = new Custom2();
+                    custom2.updateItem(name, "Waiting Responce");
+                    listView.getItems().add(custom2);
+                }
+                else if (finished == false){
+                    RateItem rateItem = new RateItem();
+                    rateItem.updateItem(name,OnClick(rateItem.getRating(),rateItem.getComment(),cid,bid));
+                    listView.getItems().add(rateItem);
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -54,5 +64,31 @@ public class CheckBookingClient implements Initializable {
         stage.setScene(scene);
         stage.show();
         stage1.close();
+    }
+
+    public EventHandler<MouseEvent> OnClick(double rating,String comment,int cid,int bid) throws SQLException {
+
+        EventHandler<MouseEvent> eventEventHandler = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    Connection con = DBconnection.getConnection();
+                    Statement stmt = con.createStatement();
+                    stmt.executeUpdate("insert SitterRating(stars,comment,Client_idclient,BabySitter_idBabySitter) values("+(int)rating+",'"+comment+"',"+cid+","+bid+")");
+                    Parent parent = FXMLLoader.load(getClass().getResource("../fxml/PaymentMethod.fxml"));
+                    Scene scene = new Scene(parent);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.show();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        };
+        return eventEventHandler;
+    }
+
+    public void Delete(MouseEvent mouseEvent) {
+        listView.getItems().remove(listView.getSelectionModel().getSelectedItem());
     }
 }

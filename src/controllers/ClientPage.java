@@ -5,6 +5,8 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import gui_classes.Client;
 import gui_classes.CustomData;
+import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -15,6 +17,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.controlsfx.control.Notifications;
+import sample.DBconnection;
 import sample.Main;
 
 import java.io.IOException;
@@ -23,6 +27,7 @@ import java.sql.*;
 import java.util.ResourceBundle;
 
 public class ClientPage implements Initializable {
+    ObservableList<Custom> observableList;
     public JFXHamburger hamburger;
     public JFXDrawer drawer;
     public ListView<Custom> listView;
@@ -64,6 +69,7 @@ public class ClientPage implements Initializable {
             ResultSet rs = stmt.executeQuery(test);
             while(rs.next()) {
                 String username = rs.getString("Person_username");
+                System.out.println(username);
                 String name = rs.getString("name");
                 String phone = rs.getString("phone");
                 String address = rs.getString("address");
@@ -73,11 +79,12 @@ public class ClientPage implements Initializable {
                 int rating = 2;
                 Image image = new Image(rs.getString("image"));
                 System.out.println(image.toString());
-                Custom custom = new Custom();
-                CustomData customData = new CustomData(username,name,phone,address,birthdate.toString(),email,price_hour,rating,image);
+                Custom custom = new Custom(username);
+                CustomData customData = new CustomData(username,name,phone,address,birthdate.toString(),email,price_hour,rating,image,OnClick(username));
                 custom.updateItem(customData);
                 listView.getItems().add(custom);
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -144,5 +151,38 @@ public class ClientPage implements Initializable {
 
     public ClientPage getController() {
         return this;
+    }
+    public EventHandler<MouseEvent> OnClick(String username){
+        EventHandler<MouseEvent> eventEventHandler = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    Connection con = DBconnection.getConnection();
+                    Statement stmt = con.createStatement();
+                    System.out.println(username);
+                    ResultSet rs = stmt.executeQuery("select idBabySitter from BabySitter where Person_username = '" +username+ "'");
+                    rs.next();
+                    int idBabySitter = rs.getInt(1);
+                    System.out.println(idBabySitter+"");
+                    rs = stmt.executeQuery("select idclient from Client where Person_username = '" + Main.getUserName() + "'");
+                    rs.next();
+                    int cid = rs.getInt(1);
+                    double paid = 0;
+                    stmt.executeUpdate("insert into sitter_payment(paid,Client_idclient,admin_idadmin,BabySitter_idBabySitter) values(" + paid + "," + cid + "," + 1 + "," + idBabySitter + ")");
+                    rs = stmt.executeQuery("select idsitter_payment from sitter_payment where Client_idclient=" + cid + " and BabySitter_idBabySitter=" + idBabySitter);
+                    rs.next();
+                    int idpayment = rs.getInt(1);
+                    stmt.executeUpdate("insert SitterBooking(date,Client_idclient,BabySitter_idBabySitter,sitter_payment_idsitter_payment,answer) values('1999-12-12'," + cid + "," + idBabySitter + "," + idpayment + ",false);");
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/PaymentMethod.fxml"));
+                    fxmlLoader.load();
+                    PaymentMethod paymentMethod = fxmlLoader.getController();
+                    paymentMethod.setId(idpayment);
+                    Notifications.create().title("Booking Succseeded !!").text("now wait for Babysitter responce").showConfirm();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        };
+        return eventEventHandler;
     }
 }

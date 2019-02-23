@@ -120,10 +120,6 @@ public class LoginPage implements Initializable {
         else if (checkInfo() && loginAsBabysitter()) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/BabySitterPage.fxml"));
             Parent parent= loader.load();
-            BabySitterPage babySitterPage = loader.getController();
-            babySitterPage.setID(ID);
-            System.out.println(ID);
-            babySitterPage.setData();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -186,6 +182,7 @@ public class LoginPage implements Initializable {
                 if(rs3.next()) {
                     System.out.println("found admin");
                     Main.setUserName(username.getText());
+                    Main.setType("Admin");
                     return true;
                 }
                 else{
@@ -220,6 +217,7 @@ public class LoginPage implements Initializable {
                     System.out.println("found client");
                     ID = rs3.getInt(1);
                     Main.setUserName(username.getText());
+                    Main.setType("Client");
                     return true;
                 }
                 else{
@@ -255,6 +253,7 @@ public class LoginPage implements Initializable {
                     if(rs3.next()) {
                         ID = rs3.getInt(1);
                         Main.setUserName(username.getText());
+                        Main.setType("BabySitter");
                         return true;
                     }
                     else{
@@ -294,7 +293,7 @@ public class LoginPage implements Initializable {
                 stage.setScene(scene);
                 stage.show();
             } else if (checkInfo() && loginAsBabysitter()) {
-                Parent parent = FXMLLoader.load(getClass().getResource("../fxml/BabysitterPage.fxml"));
+                Parent parent = FXMLLoader.load(getClass().getResource("../fxml/BabySitterPage.fxml"));
                 Scene scene = new Scene(parent);
                 Stage stage = (Stage) ((Node) keyEvent.getSource()).getScene().getWindow();
                 stage.setScene(scene);

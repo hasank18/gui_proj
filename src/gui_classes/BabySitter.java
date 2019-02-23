@@ -10,7 +10,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class BabySitter extends Person implements Observer {
-    private double price_hour;
+    private double price_hour , recieved_money;
     private ArrayList<Notifications> notifications;
     private int ID;
     private ArrayList<Booking> bookings;
@@ -18,13 +18,14 @@ public class BabySitter extends Person implements Observer {
     private ArrayList<Payment> payments;
     private boolean online = false;
 
-    public BabySitter(int ID, String username, String name, String phone, String address, String email, String gender, String password, Date birthdate, Image image, double price_hour) {
+    public BabySitter(int ID, String username, String name, String phone, String address, String email, String gender, String password, Date birthdate, Image image, double price_hour,double recieved_money) {
         super(username, name, phone, address, email, gender, password, birthdate, image);
         this.price_hour = price_hour;
         bookings = new ArrayList<>();
         ratings = new ArrayList<>();
         payments = new ArrayList<>();
         notifications = new ArrayList<>();
+        this.recieved_money = recieved_money;
         this.ID=ID;
     }
 
@@ -80,6 +81,14 @@ public class BabySitter extends Person implements Observer {
 
     public void setOnline(boolean online) {
         this.online = online;
+    }
+
+    public double getRecieved_money() {
+        return recieved_money;
+    }
+
+    public void setRecieved_money(double recieved_money) {
+        this.recieved_money = recieved_money;
     }
 }
 

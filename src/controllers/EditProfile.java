@@ -61,11 +61,11 @@ public class EditProfile implements Initializable {
                 address.setText(rs.getString("address"));
                 phone.setText(rs.getString("phone"));
                 birthdate.setText(rs.getDate("birthdate").toString());
-                Image image1 = new Image(String.valueOf(getClass().getResource(rs.getString("image"))));
-                if(image1!=null)
-                    image.setImage(image1);
-                else
-                    image.setImage(new Image("file:../resources/default_profile_picture.png"));
+//                Image image1 = new Image(String.valueOf(getClass().getResource(rs.getString("image"))));
+//                if(image1!=null)
+//                    image.setImage(image1);
+//                else
+//                    image.setImage(new Image("file:../resources/default_profile_picture.png"));
                 profilePicture.setText(rs.getString("image"));
                 password.setText(rs.getString("password"));
                 email.setText(rs.getString("email"));
@@ -92,11 +92,30 @@ public class EditProfile implements Initializable {
     }
 
     public void Return(ActionEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("../fxml/ClientPage.fxml"));
-        Scene scene = new Scene(parent);
-        Stage stage = new Stage(),stage1 = (Stage)anchorPane.getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-        stage1.close();
+        if(Main.getType().equals("Client")) {
+            Parent parent = FXMLLoader.load(getClass().getResource("../fxml/ClientPage.fxml"));
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage(),stage1 = (Stage)anchorPane.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+            stage1.close();
+        }
+        else if (Main.getType().equals("BabySitter")) {
+            Parent parent = FXMLLoader.load(getClass().getResource("../fxml/BabySitterPage.fxml"));
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage(),stage1 = (Stage)anchorPane.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+            stage1.close();
+        }
+        else{
+            Parent parent = FXMLLoader.load(getClass().getResource("../fxml/AdminPage.fxml"));
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage(),stage1 = (Stage)anchorPane.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+            stage1.close();
+        }
+
     }
 }

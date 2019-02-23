@@ -513,3 +513,14 @@ create view BookingData as select * from Person,SitterBooking,BabySitter where B
 update BabySitterView set image = 'file:../resources/default_profile_picture.png' ;
 alter table sitter_payment drop recieved_sitter;
 alter table sitter_payment drop recieved_admin;
+
+create view BabySitterRating as select * from BabySitter,Person,SitterRating where Person.username = BabySitter.Person_username and BabySitter.idBabySitter = SitterRating.idSitterRating;
+select * from SitterRating;
+select * from BabySitterRating;
+insert SitterRating(stars,comment,Client_idclient,BabySitter_idBabySitter) values(2,'this is test',1,1);
+alter table SitterBooking add finished boolean;
+update SitterBooking set finished = false;
+
+drop view BookingData;
+
+

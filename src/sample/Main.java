@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    static String Username;
+    static String Username,type;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -27,5 +27,13 @@ public class Main extends Application {
     }
     public static String getUserName(){
         return Username;
+    }
+
+    public static String getType() {
+        return type;
+    }
+
+    public static void setType(String type) {
+        Main.type = type;
     }
 }

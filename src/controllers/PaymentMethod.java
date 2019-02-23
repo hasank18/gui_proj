@@ -22,6 +22,7 @@ public class PaymentMethod implements Initializable {
 
     public TextField hours;
     public AnchorPane anchorPane;
+    static int id;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -31,22 +32,17 @@ public class PaymentMethod implements Initializable {
     public void submit(ActionEvent event) throws SQLException {
         Connection con = DBconnection.getConnection();
         Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("select idBabySitter from BabySitter where Person_username = '"+ Custom.clientUsername+"'");
-        rs.next();
-        int idBabySitter = rs.getInt(1);
-        rs = stmt.executeQuery("select idclient from Client where Person_username = '"+Main.getUserName()+"'");
-        rs.next();
-        int cid = rs.getInt(1);
-        String[] strings = Custom.price_hour1.split(":");
-        double paid = Double.parseDouble(hours.getText())*Double.parseDouble(strings[1]);
-        stmt.executeUpdate("insert into sitter_payment(paid,Client_idclient,admin_idadmin,BabySitter_idBabySitter) values("+paid+","+cid+","+1+","+idBabySitter+")");
-        rs = stmt.executeQuery("select idsitter_payment from sitter_payment where Client_idclient="+cid+" and BabySitter_idBabySitter="+idBabySitter);
-        rs.next();
-        int idpayment = rs.getInt(1);
-        stmt.executeUpdate("insert into SitterBooking(date,Client_idclient,BabySitter_idBabySitter,sitter_payment_idsitter_payment,answer) values('1999-12-12',"+cid+","+idBabySitter+","+idpayment+",false);");
+//        String[] strings = Custom.price_hour1.split(":");
+//        double paid = Double.parseDouble(hours.getText())*Double.parseDouble(strings[1]);
+        stmt.executeUpdate("update sitter_payment set paid="+5+" where idsitter_payment="+id);
+        stmt.executeUpdate("update SitterBooking set finished = true where sitter_payment_idsitter_payment="+id);
         Stage stage = (Stage)anchorPane.getScene().getWindow();
         stage.close();
-        Notifications.create().title("Booking Succseeded !!").text("now wait for Babysitter responce").showConfirm();
+        Notifications.create().title("Rating and Payment added successfully!!").showInformation();
 
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

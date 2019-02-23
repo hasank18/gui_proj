@@ -46,8 +46,8 @@ import java.util.ArrayList;
      public void setBaby_sitters(ArrayList<BabySitter> baby_sitters) {
          this.baby_sitters = baby_sitters;
      }
-     public void addBabySitter(int ID,String username, String name, String phone, String email, String gender, String password, Date birthdate, Image image,double price_hour){
-        baby_sitters.add(new BabySitter(ID,username,name,phone,address,email,gender,password,birthdate,image,price_hour));
+     public void addBabySitter(int ID,String username, String name, String phone, String email, String gender, String password, Date birthdate, Image image,double price_hour,double recMoney){
+        baby_sitters.add(new BabySitter(ID,username,name,phone,address,email,gender,password,birthdate,image,price_hour,recMoney));
      }
      public void addClient(Client client){
         clients.add(client);
